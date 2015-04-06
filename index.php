@@ -61,7 +61,7 @@ function addproduto(){
     $produtonome  = $app->request()->post("produtonome");
     $produtovalor = $app->request()->post("produtovalor");
     $produtoestoque = $app->request()->post("produtoestoque");
-    $token = $app->request()->get("token");
+    $token = $app->request()->post("token");
 
     if ($_SESSION['token'] == $token){
         $produto = array(
@@ -75,7 +75,7 @@ function addproduto(){
     } else {
         $produto = array();
         $status = "erro";
-        $mensagem = "erro ao adicionar o produto";
+        $mensagem = "erro, token inválido";
     }
 
     $_SESSION['produto'] = $produto;
@@ -92,14 +92,22 @@ function addproduto(){
 $app->get('/ultimoproduto', 'ultimoproduto');
 
 function ultimoproduto(){
-    $produto = $_SESSION['produto'];
+    $token = $app->request()->get("token");
     
-    if (count($produto) > 0){
-        $status = "sucesso";
-        $mensagem = "sucesso ao adicionar o produto";
+    if ($_SESSION['token'] == $token){
+        $produto = $_SESSION['produto'];
+
+        if (count($produto) > 0){
+            $status = "sucesso";
+            $mensagem = "sucesso ao adicionar o produto";
+        } else {
+            $status = "erro";
+            $mensagem = "nenhum produto cadastrado";
+        }
     } else {
+        $produto = array();
         $status = "erro";
-        $mensagem = "nenhum produto cadastrado";
+        $mensagem = "erro, token inválido";
     }
 
     header("Content-Type: application/json");
