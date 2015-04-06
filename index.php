@@ -30,7 +30,7 @@ function dologin(){
             "usuariologin" => "aluno",
             "usuariosenha" => "qualister",
             "usuarionome" => "Aluno Qualister",
-            "datacadastro" => date("%Y%m%d"),
+            "datacadastro" => date("Y-m-d"),
             "token" => $token
         );
         $status = "sucesso";
