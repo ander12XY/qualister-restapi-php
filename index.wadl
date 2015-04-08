@@ -24,7 +24,7 @@
             </response>
          </method>
       </resource>
-      <resource path="api/addproduto" id="Adicionar produto">
+      <resource path="api/produto" id="Adicionar produto">
          <doc xml:lang="en" title="Adicionar produto"/>
          <method name="POST" id="Adicionar produto">
             <doc xml:lang="en" title="Adicionar produto"/>
@@ -52,7 +52,7 @@
                <representation mediaType="application/x-www-form-urlencoded"/>
             </response>
             <response status="200">
-               <representation mediaType="application/json" element="add:Response" xmlns:add="http://localhost/api/addproduto"/>
+               <representation mediaType="application/json" element="add:Response" xmlns:add="http://localhost/api/produto"/>
                <representation mediaType="text/html; charset=UTF-8" element="html"/>
             </response>
             <response status="500">

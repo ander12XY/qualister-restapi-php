@@ -54,7 +54,7 @@ function dologin(){
     exit();
 }
 
-$app->post('/addproduto', 'addproduto');
+$app->post('/produto', 'addproduto');
 
 function addproduto(){
     global $app;
